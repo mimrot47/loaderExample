@@ -1,0 +1,67 @@
+@if (show) {
+  <div
+    class="backdrop"
+    [class.full-screen]="config.fullScreenBackdrop"
+    [style.border-radius]="config.backdropBorderRadius"
+    [style.background-color]="config.backdropBackgroundColour"
+  ></div>
+
+  <!-- Spinner Template -->
+  @switch (config.animationType) {
+
+    <!-- Circle Spinner -->
+    @case (ngxLoadingAnimationTypes.Circle) {
+      <div
+        class="spinner-circle"
+        [class.full-screen]="config.fullScreenBackdrop"
+        [style.border-top-color]="config.secondaryColour"
+        [style.border-right-color]="config.secondaryColour"
+        [style.border-bottom-color]="config.secondaryColour"
+        [style.border-left-color]="config.primaryColour"
+      ></div>
+    }
+
+    <!-- Cube Grid -->
+    @case (ngxLoadingAnimationTypes.CubeGrid) {
+      <div
+        class="sk-cube-grid"
+        [class.full-screen]="config.fullScreenBackdrop"
+      >
+        @for (n of [0,1,2,3,4,5,6,7,8]; track n) {
+          <div
+            class="sk-cube sk-cube{{ n + 1 }}"
+            [style.background-color]="config.primaryColour"
+          ></div>
+        }
+      </div>
+    }
+
+    <!-- Double Bounce -->
+    @case (ngxLoadingAnimationTypes.DoubleBounce) {
+      <div
+        class="spinner-double-bounce"
+        [class.full-screen]="config.fullScreenBackdrop"
+      >
+        <div class="double-bounce1" [style.background-color]="config.primaryColour"></div>
+        <div class="double-bounce2" [style.background-color]="config.secondaryColour"></div>
+      </div>
+    }
+
+    <!-- Default: Three Bounce -->
+    @default {
+      <div
+        class="spinner-three-bounce"
+        [class.full-screen]="config.fullScreenBackdrop"
+      >
+        <div class="bounce1" [style.background-color]="config.primaryColour"></div>
+        <div class="bounce2" [style.background-color]="config.secondaryColour"></div>
+        <div class="bounce3" [style.background-color]="config.tertiaryColour"></div>
+      </div>
+    }
+  }
+
+  <!-- Custom Template (Optional) -->
+  @if (template) {
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+  }
+}
