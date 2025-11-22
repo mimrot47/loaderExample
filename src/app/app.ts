@@ -1,4 +1,4 @@
-import { INgxLoadingConfig, NgxLoadingAnimationTypes } from './../ngx-loading/ngx-loading-config';
+import { INgxLoadingConfig, ngxLoadingAnimationTypes, NgxLoadingAnimationTypes } from './../ngx-loading/ngx-loading-config';
 
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -15,7 +15,7 @@ export class App {
   protected readonly title = signal('loaderExample');
   loading = false;
   config: INgxLoadingConfig = {
-    animationType: NgxLoadingAnimationTypes.Circle,
+    animationType: ngxLoadingAnimationTypes.CubeGrid,
     backdropBackgroundColour: 'rgba(0,0,0,0.4)',
     fullScreenBackdrop: true,
     primaryColour: '#00BCD4',
